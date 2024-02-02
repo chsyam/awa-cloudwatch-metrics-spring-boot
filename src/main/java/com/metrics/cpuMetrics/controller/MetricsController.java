@@ -12,6 +12,7 @@ import com.metrics.cpuMetrics.service.CloudWatchService;
 import software.amazon.awssdk.services.cloudwatch.model.MetricDataResult;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,12 +26,15 @@ public class MetricsController {
 	public CustomMetricData getCPUMetrics(@PathVariable String instanceId) {
 		CustomMetricData customMetricData = new CustomMetricData();
 		List<MetricDataResult> metricDataResult = this.cloudWatchService.getCPUMetrics(instanceId);
-		List<Instant> timestamps = metricDataResult.get(0).timestamps();
+		List<Instant> temp = metricDataResult.get(0).timestamps();
+		ArrayList<String> timestamps = new ArrayList<>();
+		for (Instant value : temp) {
+			timestamps.add(value.toString());
+		}
 		List<Double> values = metricDataResult.get(0).values();
 		customMetricData.setMetricName(metricDataResult.get(0).label());
 		customMetricData.setTimestamps(timestamps);
 		customMetricData.setValues(values);
-
 		return customMetricData;
 	}
 }

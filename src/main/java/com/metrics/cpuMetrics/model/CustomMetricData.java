@@ -1,12 +1,12 @@
 package com.metrics.cpuMetrics.model;
 
-import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class CustomMetricData {
 	private String metricName;
-	private List<Instant> timestamps;
+	private List<String> timestamps;
 	private List<Double> values;
 
 	public CustomMetricData() {
@@ -20,11 +20,11 @@ public class CustomMetricData {
 		this.metricName = metricName;
 	}
 
-	public List<Instant> getTimestamps() {
+	public List<String> getTimestamps() {
 		return timestamps;
 	}
 
-	public void setTimestamps(List<Instant> timestamps) {
+	public void setTimestamps(ArrayList<String> timestamps) {
 		this.timestamps = timestamps;
 	}
 

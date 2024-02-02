@@ -19,9 +19,9 @@ public class CloudWatchService {
 				.metricDataQueries(MetricDataQuery.builder().id("m1").metricStat(MetricStat.builder()
 						.metric(Metric.builder().namespace("AWS/EC2").metricName("CPUUtilization")
 								.dimensions(Dimension.builder().name("InstanceId").value(instanceId).build()).build())
-						.period(300) // Set the desired period in seconds
+						.period(60)
 						.stat("Average").build()).returnData(true).build())
-				.startTime(Instant.now().minusSeconds(3600)) // Set the start time accordingly
+				.startTime(Instant.now().minusSeconds(660))
 				.endTime(Instant.now()).build());
 
 		return response.metricDataResults();

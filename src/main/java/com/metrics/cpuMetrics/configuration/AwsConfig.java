@@ -11,10 +11,9 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 public class AwsConfig {
 	@Bean
 	public CloudWatchClient cloudWatchClient() {
-		AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("AKIA4MTWISR4MOB6RWPF", "06OdDZhO/bHgs7YiBWPgKgfmKN2wO09IIo+roES5");
+		AwsBasicCredentials awsCredentials = AwsBasicCredentials.create("AKIA4MTWISR4MOB6RWPF",
+				"06OdDZhO/bHgs7YiBWPgKgfmKN2wO09IIo+roES5");
 
-        return CloudWatchClient.builder()
-                .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
-                .build();
+		return CloudWatchClient.builder().credentialsProvider(StaticCredentialsProvider.create(awsCredentials)).build();
 	}
 }
